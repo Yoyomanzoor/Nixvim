@@ -4,6 +4,8 @@
     lualine.enable = lib.mkEnableOption "Enable lualine module";
   };
   config = lib.mkIf config.lualine.enable {
+    opts.showcmdloc = "statusline";
+
     plugins.lualine = {
       enable = true;
       settings = {
@@ -28,10 +30,10 @@
             "diff"
             "diagnostics"
           ];
-          lualine_c = [ "filename" ];
+          lualine_c = [ "filename" "%S" ];
           lualine_x = [ "filetype" ];
           lualine_y = [ "progress" ];
-          lualine_z = [ ''" " .. os.date("%R")'' ];
+          lualine_z = [ "location" ];
         };
       };
     };
