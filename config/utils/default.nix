@@ -7,6 +7,7 @@
   imports = [
     ./better-escape.nix
     ./cloak.nix
+    ./floaterm.nix
     ./harpoon.nix
     ./markdown-preview.nix
     ./mini.nix
@@ -36,6 +37,7 @@
   config = lib.mkIf config.utils.enable {
     better-escape.enable = lib.mkDefault true;
     cloak.enable = lib.mkDefault true;
+    floaterm.enable = lib.mkDefault true;
     harpoon.enable = lib.mkDefault true;
     markdown-preview.enable = lib.mkDefault false;
     mini.enable = lib.mkDefault true;
@@ -49,7 +51,7 @@
     persistence.enable = lib.mkDefault true;
     plenary.enable = lib.mkDefault true;
     project-nvim.enable = lib.mkDefault true;
-    sidebar.enable = lib.mkDefault true;
+    sidebar.enable = lib.mkDefault false;
     tmux-navigator.enable = lib.mkDefault true;
     todo-comments.enable = lib.mkDefault true;
     ultimate-autopair.enable = lib.mkDefault true;

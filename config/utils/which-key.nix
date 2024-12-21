@@ -70,6 +70,12 @@
           }
 
           {
+            __unkeyed-1 = "<leader>j";
+            mode = "n";
+            group = "+terminal";
+          }
+
+          {
             __unkeyed-1 = "<leader>g";
             mode = [
               "n"

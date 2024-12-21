@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ lib, config, pkgs, ... }:
 {
   options = {
     conform.enable = lib.mkEnableOption "Enable conform module";
@@ -24,7 +24,18 @@
             return { timeout_ms = 500, lsp_format = 'fallback' }
           end
         '';
+        formatters = {
+          nixfmt-rfc-style = { command = lib.getExe pkgs.nixfmt-rfc-style; };
+          isort = { command = lib.getExe pkgs.isort; };
+          jq = { command = lib.getExe pkgs.jq; };
+          rubyfmt = { command = lib.getExe pkgs.rubyfmt; };
+          shellcheck = { command = lib.getExe pkgs.shellcheck; };
+          shellharden = { command = lib.getExe pkgs.shellharden; };
+          shfmt = { command = lib.getExe pkgs.shfmt; };
+        };
         formatters_by_ft = {
+          bash = [ "shellcheck" "shellharden" "shfmt" ];
+          cpp = [ "clang_format" ];
           html = {
             __unkeyed-1 = "prettierd";
             __unkeyed-2 = "prettier";
@@ -55,16 +66,19 @@
             __unkeyed-2 = "prettier";
             stop_after_first = true;
           };
+          json = [ "jq" ];
           java = [ "google-java-format" ];
-          python = [ "black" ];
+          python = [ "black" "isort" ];
           lua = [ "stylua" ];
-          nix = [ "nixfmt" ];
+          nix = [ "nixfmt" "nixfmt-rfc-style" ];
           markdown = {
             __unkeyed-1 = "prettierd";
             __unkeyed-2 = "prettier";
             stop_after_first = true;
           };
+          yaml = [ "prettierd" ];
           rust = [ "rustfmt" ];
+          ruby = [ "rubyfmt" ];
         };
       };
     };
