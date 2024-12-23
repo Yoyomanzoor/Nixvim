@@ -7,6 +7,11 @@
     plugins.neoscroll = {
       enable = true;
       settings = {
+        cursor_scrolls_alone = true;
+        easing_function = "quadratic";
+        hide_cursor = true;
+        stop_eof = true;
+        respect_scrolloff = false;
         mappings = [
           "<C-u>"
           "<C-d>"
