@@ -16,5 +16,5 @@ jobs:
         with:
           name: "Yoyomanzoor/Nixvim"
           rolling: true
-          visibility: "Public"
+          visibility: "public"
           include-output-paths: true
